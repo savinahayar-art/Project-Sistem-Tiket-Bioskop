@@ -1,0 +1,599 @@
+import java.util.Scanner;
+
+class Tiket {
+
+    int id;
+    String namaFilm;
+    String kategori;
+    int jumlahTiket;
+    boolean aktif;
+
+    public Tiket(int id, String namaFilm,
+                  String kategori, int jumlahTiket) {
+
+        this.id = id;
+        this.namaFilm = namaFilm;
+        this.kategori = kategori;
+        this.jumlahTiket = jumlahTiket;
+        this.aktif = true;
+    }
+}
+
+public class BioskopApp1 {
+
+    static Tiket[] data = new Tiket[100];
+    static int n = 0;
+
+    static Scanner sc = new Scanner(System.in);
+
+    static void initData() {
+
+        data[n++] = new Tiket(112, "Avengers", "Action", 50);
+        data[n++] = new Tiket(101, "Frozen", "Animation", 30);
+        data[n++] = new Tiket(121, "Joker", "Drama", 20);
+        data[n++] = new Tiket(110, "Batman", "Action", 40);
+        data[n++] = new Tiket(127, "Spiderman", "Action", 60);
+
+        data[n++] = new Tiket(107, "Moana", "Animation", 25);
+        data[n++] = new Tiket(118, "Titanic", "Romance", 15);
+        data[n++] = new Tiket(103, "Up", "Animation", 35);
+        data[n++] = new Tiket(130, "Coco", "Animation", 45);
+        data[n++] = new Tiket(115, "Inception", "Sci-Fi", 50);
+
+        data[n++] = new Tiket(105, "Interstellar", "Sci-Fi", 20);
+        data[n++] = new Tiket(125, "Matrix", "Sci-Fi", 30);
+        data[n++] = new Tiket(109, "Gladiator", "Action", 25);
+        data[n++] = new Tiket(120, "Cars", "Animation", 40);
+        data[n++] = new Tiket(111, "Aladdin", "Fantasy", 35);
+
+        data[n++] = new Tiket(129, "Mulan", "Action", 20);
+        data[n++] = new Tiket(104, "Encanto", "Animation", 30);
+        data[n++] = new Tiket(122, "Dune", "Sci-Fi", 45);
+        data[n++] = new Tiket(114, "Thor", "Action", 50);
+        data[n++] = new Tiket(126, "Hulk", "Action", 60);
+
+        data[n++] = new Tiket(102, "Iron Man", "Action", 50);
+        data[n++] = new Tiket(119, "Doctor Strange", "Fantasy", 35);
+        data[n++] = new Tiket(108, "Black Panther", "Action", 40);
+        data[n++] = new Tiket(124, "Soul", "Animation", 25);
+        data[n++] = new Tiket(116, "Luca", "Animation", 20);
+
+        data[n++] = new Tiket(128, "Turning Red", "Animation", 30);
+        data[n++] = new Tiket(106, "Venom", "Action", 45);
+        data[n++] = new Tiket(123, "Deadpool", "Action", 50);
+        data[n++] = new Tiket(113, "Minions", "Animation", 60);
+        data[n++] = new Tiket(117, "Shrek", "Animation", 55);
+
+        data[n++] = new Tiket(135, "Barbie", "Comedy", 40);
+        data[n++] = new Tiket(131, "Oppenheimer", "Drama", 35);
+        data[n++] = new Tiket(140, "John Wick", "Action", 50);
+        data[n++] = new Tiket(132, "Elemental", "Animation", 20);
+        data[n++] = new Tiket(138, "The Nun", "Horror", 25);
+
+        data[n++] = new Tiket(134, "Insidious", "Horror", 30);
+        data[n++] = new Tiket(136, "Fast X", "Action", 45);
+        data[n++] = new Tiket(133, "Wish", "Animation", 15);
+        data[n++] = new Tiket(139, "Aquaman", "Action", 55);
+        data[n++] = new Tiket(137, "Kung Fu Panda", "Animation", 40);
+
+        data[n++] = new Tiket(145, "Toy Story", "Animation", 35);
+        data[n++] = new Tiket(141, "Avatar", "Sci-Fi", 60);
+        data[n++] = new Tiket(150, "Conjuring", "Horror", 20);
+        data[n++] = new Tiket(142, "Transformers", "Action", 45);
+        data[n++] = new Tiket(148, "Inside Out", "Animation", 50);
+
+        data[n++] = new Tiket(144, "Annabelle", "Horror", 25);
+        data[n++] = new Tiket(146, "Top Gun", "Action", 30);
+        data[n++] = new Tiket(143, "Cinderella", "Fantasy", 15);
+        data[n++] = new Tiket(149, "Mission Impossible", "Action", 55);
+        data[n++] = new Tiket(147, "How to Train Your Dragon", "Animation", 40);
+
+        System.out.println(">> 50 data berhasil di-load!");
+    }
+
+    // ================= TAMBAH DATA =================
+    static void tambahData() {
+
+        try {
+
+            System.out.print("Masukkan ID: ");
+            int id = Integer.parseInt(sc.nextLine());
+
+            System.out.print("Masukkan Nama Film: ");
+            String nama = sc.nextLine();
+
+            System.out.print("Masukkan Kategori: ");
+            String kategori = sc.nextLine();
+
+            System.out.print("Masukkan Jumlah Tiket: ");
+            int jumlah = Integer.parseInt(sc.nextLine());
+
+            data[n++] = new Tiket(id, nama, kategori, jumlah);
+
+            System.out.println(">> Data berhasil ditambahkan!");
+
+        } catch (Exception e) {
+
+            System.out.println(">> Input tidak valid!");
+        }
+    }
+
+    // ================= TAMPIL DATA =================
+    static void tampilData() {
+
+        System.out.println("\n=== DATA FILM ===");
+
+        for (int i = 0; i < n; i++) {
+
+            if (data[i].aktif) {
+
+                System.out.println(
+                        data[i].id + " | " +
+                        data[i].namaFilm + " | " +
+                        data[i].kategori + " | " +
+                        data[i].jumlahTiket
+                );
+            }
+        }
+    }
+
+    // ================= EDIT DATA =================
+    static void editData() {
+
+        try {
+
+            System.out.print("Masukkan ID Film: ");
+            int id = Integer.parseInt(sc.nextLine());
+
+            for (int i = 0; i < n; i++) {
+
+                if (data[i].id == id && data[i].aktif) {
+
+                    System.out.print("Nama Baru: ");
+                    data[i].namaFilm = sc.nextLine();
+
+                    System.out.print("Kategori Baru: ");
+                    data[i].kategori = sc.nextLine();
+
+                    System.out.print("Jumlah Tiket Baru: ");
+                    data[i].jumlahTiket =
+                            Integer.parseInt(sc.nextLine());
+
+                    System.out.println(">> Data berhasil diupdate!");
+                    return;
+                }
+            }
+
+            System.out.println(">> Data tidak ditemukan!");
+
+        } catch (Exception e) {
+
+            System.out.println(">> Input tidak valid!");
+        }
+    }
+
+    // ================= HAPUS DATA =================
+    static void hapusData() {
+
+        try {
+
+            System.out.print("Masukkan ID Film: ");
+            int id = Integer.parseInt(sc.nextLine());
+
+            for (int i = 0; i < n; i++) {
+
+                if (data[i].id == id && data[i].aktif) {
+
+                    data[i].aktif = false;
+
+                    System.out.println(">> Data berhasil dihapus!");
+                    return;
+                }
+            }
+
+            System.out.println(">> Data tidak ditemukan!");
+
+        } catch (Exception e) {
+
+            System.out.println(">> Input tidak valid!");
+        }
+    }
+
+    // ================= LINEAR SEARCH =================
+    static void linearSearchNama() {
+
+        System.out.print("Cari Nama Film: ");
+        String cari = sc.nextLine();
+
+        boolean ketemu = false;
+
+        for (int i = 0; i < n; i++) {
+
+            if (data[i].aktif &&
+                    data[i].namaFilm.equalsIgnoreCase(cari)) {
+
+                System.out.println(
+                        ">> Ditemukan: " +
+                        data[i].namaFilm
+                );
+
+                ketemu = true;
+            }
+        }
+
+        if (!ketemu) {
+
+            System.out.println(">> Film tidak ditemukan!");
+        }
+    }
+
+    // ================= BUBBLE SORT ID =================
+    static void bubbleSortID() {
+
+        for (int i = 0; i < n - 1; i++) {
+
+            for (int j = 0; j < n - i - 1; j++) {
+
+                if (data[j].id > data[j + 1].id) {
+
+                    Tiket temp = data[j];
+                    data[j] = data[j + 1];
+                    data[j + 1] = temp;
+                }
+            }
+        }
+
+        System.out.println(">> Data berhasil diurutkan berdasarkan ID!");
+
+        tampilData();
+    }
+
+    // ================= SELECTION SORT NAMA =================
+    static void selectionSortNama() {
+
+        for (int i = 0; i < n - 1; i++) {
+
+            int min = i;
+
+            for (int j = i + 1; j < n; j++) {
+
+                if (data[j].namaFilm.compareToIgnoreCase(
+                        data[min].namaFilm) < 0) {
+
+                    min = j;
+                }
+            }
+
+            Tiket temp = data[i];
+            data[i] = data[min];
+            data[min] = temp;
+        }
+
+        System.out.println(">> Data berhasil diurutkan berdasarkan Nama!");
+
+        tampilData();
+    }
+
+    // ================= SORT JUMLAH TIKET =================
+    static void sortJumlahTiket() {
+
+        for (int i = 0; i < n - 1; i++) {
+
+            for (int j = 0; j < n - i - 1; j++) {
+
+                if (data[j].jumlahTiket >
+                        data[j + 1].jumlahTiket) {
+
+                    Tiket temp = data[j];
+                    data[j] = data[j + 1];
+                    data[j + 1] = temp;
+                }
+            }
+        }
+
+        System.out.println(
+                ">> Data berhasil diurutkan berdasarkan jumlah tiket!"
+        );
+
+        tampilData();
+    }
+
+    // ================= BINARY SEARCH =================
+    static int binarySearchID(int id) {
+
+        int left = 0;
+        int right = n - 1;
+
+        while (left <= right) {
+
+            int mid = (left + right) / 2;
+
+            if (data[mid].id == id) {
+
+                return mid;
+            }
+
+            else if (data[mid].id < id) {
+
+                left = mid + 1;
+            }
+
+            else {
+
+                right = mid - 1;
+            }
+        }
+
+        return -1;
+    }
+
+    // ================= CARI KATEGORI =================
+    static void cariKategori() {
+
+        System.out.print("Masukkan Kategori: ");
+        String kategori = sc.nextLine();
+
+        boolean ketemu = false;
+
+        for (int i = 0; i < n; i++) {
+
+            if (data[i].aktif &&
+                    data[i].kategori.equalsIgnoreCase(kategori)) {
+
+                System.out.println(
+                        data[i].id + " | " +
+                        data[i].namaFilm + " | " +
+                        data[i].kategori + " | " +
+                        data[i].jumlahTiket
+                );
+
+                ketemu = true;
+            }
+        }
+
+        if (!ketemu) {
+
+            System.out.println(">> Kategori tidak ditemukan!");
+        }
+    }
+
+    // ================= BELI TIKET =================
+    static void beliTiket() {
+
+        try {
+
+            System.out.print("Masukkan ID Film: ");
+            int id = Integer.parseInt(sc.nextLine());
+
+            boolean ketemu = false;
+
+            for (int i = 0; i < n; i++) {
+
+                if (data[i].id == id && data[i].aktif) {
+
+                    ketemu = true;
+
+                    System.out.println(
+                            "Film: " + data[i].namaFilm
+                    );
+
+                    System.out.println(
+                            "Stok Tiket: " +
+                            data[i].jumlahTiket
+                    );
+
+                    System.out.print(
+                            "Jumlah tiket dibeli: "
+                    );
+
+                    int beli =
+                            Integer.parseInt(sc.nextLine());
+
+                    // Validasi jumlah tiket
+                    if (beli <= 0) {
+
+                        System.out.println(
+                                ">> Jumlah tiket tidak valid!"
+                        );
+                    }
+
+                    else if (beli >
+                            data[i].jumlahTiket) {
+
+                        System.out.println(
+                                ">> Stok tiket tidak mencukupi!"
+                        );
+                    }
+
+                    else {
+
+                        data[i].jumlahTiket -= beli;
+
+                        System.out.println(
+                                ">> Tiket berhasil dibeli!"
+                        );
+
+                        System.out.println(
+                                ">> Sisa tiket: " +
+                                data[i].jumlahTiket
+                        );
+                    }
+
+                    return;
+                }
+            }
+
+            if (!ketemu) {
+
+                System.out.println(
+                        ">> Film tidak ditemukan!"
+                );
+            }
+
+        } catch (Exception e) {
+
+            System.out.println(">> Input tidak valid!");
+        }
+    }
+
+    // ================= STATISTIK =================
+    static void statistik() {
+
+        int total = 0;
+        int tersedia = 0;
+
+        for (int i = 0; i < n; i++) {
+
+            if (data[i].aktif) {
+
+                total++;
+
+                if (data[i].jumlahTiket > 0) {
+
+                    tersedia++;
+                }
+            }
+        }
+
+        System.out.println("\n=== STATISTIK ===");
+        System.out.println("Total Film Aktif : " + total);
+        System.out.println("Film Tersedia    : " + tersedia);
+    }
+
+    // ================= MAIN =================
+    public static void main(String[] args) {
+
+        initData();
+
+        int pilih = -1;
+
+        do {
+
+            System.out.println("\n=== MENU BIOSKOP ===");
+            System.out.println("1. Tambah Data");
+            System.out.println("2. Tampil Data");
+            System.out.println("3. Edit Data");
+            System.out.println("4. Hapus Data");
+            System.out.println("5. Cari Nama");
+            System.out.println("6. Urutkan ID");
+            System.out.println("7. Urutkan Nama");
+            System.out.println("8. Cari ID");
+            System.out.println("9. Cari Kategori");
+            System.out.println("10. Statistik");
+            System.out.println("11. Urutkan Jumlah Tiket");
+            System.out.println("12. Beli Tiket");
+            System.out.println("0. Keluar");
+
+            System.out.print("Pilih Menu: ");
+
+            try {
+
+                pilih = Integer.parseInt(sc.nextLine());
+
+            } catch (Exception e) {
+
+                System.out.println(">> Input harus angka!");
+                continue;
+            }
+
+            switch (pilih) {
+
+                case 1:
+                    tambahData();
+                    break;
+
+                case 2:
+                    tampilData();
+                    break;
+
+                case 3:
+                    editData();
+                    break;
+
+                case 4:
+                    hapusData();
+                    break;
+
+                case 5:
+                    linearSearchNama();
+                    break;
+
+                case 6:
+                    bubbleSortID();
+                    break;
+
+                case 7:
+                    selectionSortNama();
+                    break;
+
+                case 8:
+
+                    bubbleSortID();
+
+                    try {
+
+                        System.out.print(
+                                "Masukkan ID yang dicari: "
+                        );
+
+                        int cariID =
+                                Integer.parseInt(
+                                        sc.nextLine()
+                                );
+
+                        int hasil =
+                                binarySearchID(cariID);
+
+                        if (hasil != -1 &&
+                                data[hasil].aktif) {
+
+                            System.out.println(
+                                    ">> Film ditemukan: " +
+                                    data[hasil].namaFilm
+                            );
+
+                        } else {
+
+                            System.out.println(
+                                    ">> Data tidak ditemukan!"
+                            );
+                        }
+
+                    } catch (Exception e) {
+
+                        System.out.println(
+                                ">> Input tidak valid!"
+                        );
+                    }
+
+                    break;
+
+                case 9:
+                    cariKategori();
+                    break;
+
+                case 10:
+                    statistik();
+                    break;
+
+                case 11:
+                    sortJumlahTiket();
+                    break;
+
+                case 12:
+                    beliTiket();
+                    break;
+
+                case 0:
+                    System.out.println("Program selesai.");
+                    break;
+
+                default:
+                    System.out.println(
+                            ">> Menu tidak tersedia!"
+                    );
+            }
+
+        } while (pilih != 0);
+    }
+}
